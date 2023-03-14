@@ -1,4 +1,5 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('plugins')`
+-- Make sure this is from your init.vim
 
 -- Only required if you have packer configured as `opt`
 vim.cmd.packadd('packer.nvim')
@@ -31,16 +32,8 @@ return require('packer').startup(function(use)
   -- https://tree-sitter.github.io/tree-sitter/
   use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
-  -- copilot LUA; default copilot.vim does not work with lua
-  -- the added config will lazy load the program
+  -- TODO: install copilot
   -- https://github.com/zbirenbaum/copilot.lua
-  use({
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      config = function()
-        require("copilot").setup({})
-      end,
-  })
 
   -- view syntax tree
   use('nvim-treesitter/playground')
@@ -61,6 +54,7 @@ return require('packer').startup(function(use)
   requires = {
     -- LSP Support
     {'neovim/nvim-lspconfig'},             -- Required
+    {'ray-x/go.nvim'},
     {'williamboman/mason.nvim'},           -- Optional
     {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
