@@ -7,12 +7,14 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- File browser 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- colorscheme
   use({
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
@@ -25,12 +27,34 @@ return require('packer').startup(function(use)
 	  end
   })
 
+  -- incremental parsing library for concrete syntax tree
+  -- https://tree-sitter.github.io/tree-sitter/
   use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+
+  -- copilot LUA; default copilot.vim does not work with lua
+  -- the added config will lazy load the program
+  -- https://github.com/zbirenbaum/copilot.lua
+  use({
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      config = function()
+        require("copilot").setup({})
+      end,
+  })
+
+  -- view syntax tree
   use('nvim-treesitter/playground')
+
+  -- stab files for later
   use('theprimeagen/harpoon')
+
+  -- big undo boi
   use ('mbbill/undotree')
+
+  -- git but better
   use ('tpope/vim-fugitive')
 
+  -- I need an LSP or I am scared
   use {
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v1.x',
@@ -51,7 +75,8 @@ return require('packer').startup(function(use)
     -- Snippets
     {'L3MON4D3/LuaSnip'},             -- Required
     {'rafamadriz/friendly-snippets'}, -- Optional
-  }
+  },
+  use('ray-x/go.nvim')
 }
 end)
 

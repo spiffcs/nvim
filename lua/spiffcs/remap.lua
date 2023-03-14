@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
+
+-- show netrw interface
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- move block in visual mode
@@ -11,7 +13,6 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- keep cursor in the middle when u/d navigation (half page)
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
 
 -- keep cursor in the middle when searching
 vim.keymap.set("n", "n", "nzzzv")
